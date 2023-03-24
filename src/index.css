@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+* html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.gradient-bg-hero {
+  background-color: #151c25;
+  background-image: radial-gradient(
+      at 0% 0%,
+      hsl(302deg 25% 18%) 0,
+      transparent 50%
+    ),
+    radial-gradient(at 50% 0%, hsl(0deg 39% 30%) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+}
+
+.gradient-bg-artworks {
+  background-color: #0f0e13;
+  background-image: radial-gradient(
+      at 50% 50%,
+      hsl(302deg 25% 18%) 0,
+      transparent 50%
+    ),
+    radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 50%, hsla(339, 39%, 25%, 1) 0, transparent 50%);
+}
+
+.gradient-bg-footer {
+  background-color: #151c25;
+  background-image: radial-gradient(at 0% 100%,hsl(0deg 39% 30%) 0,transparent 53%),
+    radial-gradient(at 50% 150%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+}
+
+.text-gradient {
+  background: -webkit-linear-gradient(#eee, #333);
+  /* -webkit-background-clip: text; */
+  -webkit-text-fill-color: transparent;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+}
+.lds-dual-ring:after {
+  content: ' ';
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    rgba(47, 184, 255,0.42) 31.77%,
+    #5c9df1 100%
+  );
+  mix-blend-mode: color-dodge;
+  -webkit-animation: move 10s infinite alternate;
+          animation: move 60s infinite alternate;
+  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
+}
+
+/* .blob2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(
+    180deg,
+    rgba(25, 255, 4, 0.42) 31.77%,
+    #022506 100%
+  );
+  mix-blend-mode: normal;
+  -webkit-animation: move2 20s infinite alternate;
+          animation: move2 20s infinite alternate;
+  transition: 10s cubic-bezier(0.07, 0.8, 0.16, 1);
+} */
+
+.blob3 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 47, 47, 0.42) 31.77%,
+    #f1985c 100%
+  );
+  mix-blend-mode: normal;
+  -webkit-animation: move3 10s infinite alternate;
+          animation: move3 60s infinite alternate;
+  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
+}
+
+
+/* Blob1 */
+@-webkit-keyframes move {
+  from {
+    transform: translate(-100px, -150px) rotate(90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(500px, 100px) rotate(270deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translate(-200px, -200px) rotate(90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(700px, 1100px) rotate(-270deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
+
+/* blob2 */
+@-webkit-keyframes move2 {
+  from {
+    transform: translate(-100px, -150px) rotate(90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(500px, 100px) rotate(270deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
+
+@keyframes move2 {
+  from {
+    transform: translate(500px, 0px) rotate(-90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(400px, 800px) rotate(-180deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
+
+/* blob3 */
+@-webkit-keyframes move3 {
+  from {
+    transform: translate(-100px, -150px) rotate(90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(500px, 100px) rotate(360deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
+
+@keyframes move3 {
+  from {
+    transform: translate(400px, 1200px) rotate(-10deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(800px, 100px) rotate(270deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .blob {
+    width: 150px;
+    height: 150px;
+  }
+  .blob2 {
+    width: 75px;
+    height: 75px;
+  }
+  .blob3 {
+    width: 100px;
+    height: 100px;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  .blob {
+    width: 75px;
+    height: 75px;
+  }
+  .blob2 {
+    width: 37.5px;
+    height: 37.5px;
+  }
+  .blob3 {
+    width: 50px;
+    height: 50px;
+  }
+
+}
+
+
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
