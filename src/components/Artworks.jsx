@@ -19,7 +19,7 @@ const Artworks = ({auctions, title, showOffer}) => {
 const Auction = ({auction, showOffer}) => {
     return (
     <div className="overflow:hidden bg-[#9fccff] bg-opacity-10 backdrop-blur-3xl rounded-md shadow-lx shadow-black md:mt-0 font-sans my-8  ">
-        <Link to={'/nft/' + auction.tokenid}> <img src={auction.image} alt={auction.name} className="object-cover p-4 w-full h-80" />
+        <Link to={'/nft/' + auction.tokenid}> <img src={auction.image} alt={auction.name} className="object-cover  p-4 w-full h-80 " />
 
         </Link>
         <div className="shadow-md shadow-gray-900 grid grid-cols-2 justify-between items-center text-gray-300 px-4  ">
