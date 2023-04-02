@@ -4,6 +4,7 @@ const {getGlobalState, useGlobalState, setGlobalState} = createGlobalState({
     boxModal:'scale-0',
     offerModal:'scale-0',
     priceModal:'scale-0',
+    bidModal:'scale-0',
     auctions: [ 
     {
             tokenid:1,

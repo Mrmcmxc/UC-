@@ -13,6 +13,9 @@ const Artworks = ({auctions, title, showOffer}) => {
            {auctions.map((auction, i) => (<Auction key={1} auction={auction}/>))}
         </div>
     </div>
+
+
+
   )
 }
 
@@ -36,7 +39,7 @@ const Auction = ({auction, showOffer}) => {
             <div className=' p-2 col-start-1 col-span-4 '>
                 {auction.tokenid % 2 == 0 ? (<button className="bg-blue-700 w-full h-[40px] p-2 text-center font-bold font-mono rounded-md hover:text-[#ffffff]"onClick={() => setGlobalState('priceModal', 'scale-100')}>Place a Bid</button>
                 ) : 
-                <button className="bg-green-700 w-full h-[40px] p-2 text-center font-bold font-mono rounded-md hover:text-[#ffffff]"onClick={() => setGlobalState('offerModal', 'scale-100')}>Buy Now</button>}
+                <button className="bg-green-700 w-full h-[40px] p-2 text-center font-bold font-mono rounded-md hover:text-[#ffffff]"onClick={() => setGlobalState('bidModal', 'scale-100')}>Buy Now</button>}
             </div>
             
         </div>

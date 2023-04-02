@@ -47,7 +47,7 @@ const Banner = () => {
                     
             </div>
             <div class="blob"></div>  
-            <div class="blob3"></div> 
+            <div class="blob3"></div>
         </div>
         
     )
