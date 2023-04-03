@@ -4,6 +4,7 @@ import Artworks from "../components/Artworks"
 import Footer from "../components/Footer"
 import Empty from "../components/Empty"
 import { useGlobalState } from "../store"
+import HowITWorks from "../components/HowITWorks"
 
 
 
@@ -14,11 +15,12 @@ const Home = () => {
   return (
     <div className='w-4/5 mx-auto'>
       <Hero />
+      <HowITWorks />
       <CreateNFT/>
       {/* <Artwork auctions={auctions}/> */}
       {auctions.length > 0 ? <Artworks auctions={auctions} /> : <Empty/>}
      
-      <Footer/>
+      
 
     </div>
   )

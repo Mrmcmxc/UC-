@@ -7,6 +7,7 @@ import Header from "./components/Header"
 import NewToNFT from "./views/NewToNFT"
 import ChangePrice from "./components/ChangePrice"
 import PlaceBid from "./components/PlaceBid"
+import Footer from "./components/Footer"
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
       
       <ChangePrice />
       <PlaceBid />
+      <Footer />
 
     </div>
   )

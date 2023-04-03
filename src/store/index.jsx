@@ -1,6 +1,7 @@
 import { createGlobalState } from "react-hooks-global-state"
 
 const {getGlobalState, useGlobalState, setGlobalState} = createGlobalState({
+    connectedAccount: '',
     boxModal:'scale-0',
     offerModal:'scale-0',
     priceModal:'scale-0',
@@ -204,7 +205,7 @@ auction: {
                 name: 'Auction 1',
                 description: 'description of auction 1',
                 duration: 10,
-                image: 'https://images.unsplash.com/photo-1650615567023-0721bceeecb6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
+                image: 'https://images.unsplash.com/photo-1637416067365-2b5e7e8fe8fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
                 price: '1.23',
                 biddable: 'true',
                 sold: false,
@@ -249,4 +250,20 @@ collections: [
 
 })
 
-export {getGlobalState, useGlobalState, setGlobalState}
+
+//Truncate function - text length to fit the specified 
+const truncate = (text, startChars, endChars, maxLength) => {
+if (text.length > maxLength){
+        let start = text.substring(0, startChars)
+        let end = text.substring(text.length - endChars, text.length)
+         while (start.length + end.length < maxLength) 
+                {
+                 start = start + ","
+                }
+        return start + end
+        }
+
+        return text
+}
+
+export {getGlobalState, useGlobalState, setGlobalState, truncate}
