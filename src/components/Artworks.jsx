@@ -41,10 +41,10 @@ const Auction = ({auction, showOffer}) => {
                 ) : 
                 <button className="bg-green-700 w-full h-[40px] p-2 text-center font-bold font-mono rounded-md hover:text-[#ffffff]"onClick={() => setGlobalState('bidModal', 'scale-100')}>Buy Now</button>}
             </div>
-            
         </div>
+    </div>
     
-        </div>    
+        
     )
 }
 
