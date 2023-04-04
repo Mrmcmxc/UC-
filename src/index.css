@@ -111,9 +111,9 @@ body {
   background: linear-gradient(
     180deg,
     rgba(255, 47, 47, 0.42) 31.77%,
-    #f1985c 100%
+    #ff9c8a 100%
   );
-  mix-blend-mode: normal;
+  mix-blend-mode: color-dodge;
   -webkit-animation: move3 10s infinite alternate;
           animation: move3 60s infinite alternate;
   transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
