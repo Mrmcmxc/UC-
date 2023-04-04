@@ -187,15 +187,7 @@ const {getGlobalState, useGlobalState, setGlobalState} = createGlobalState({
         image: 'https://images.unsplash.com/photo-1635396259299-2eb9a880075a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
         price: '2.33',
         biddable: 'true',
-        sold: true,
-        live: false,
-
-},
-
-
-
-
-
+        sold: true, live: false,},
 ],
 auction: {
                 tokenid:1,
@@ -203,16 +195,13 @@ auction: {
                 seller: '0x12356894168912694168426981233',
                 winner: '0x12356894168912694168426981234',
                 name: 'Auction 1',
-                description: 'description of auction 1',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ligula massa. Morbi a volutpat purus. Quisque libero mi, facilisis eget venenatis nec, imperdiet consectetur quam.',
                 duration: 10,
                 image: 'https://images.unsplash.com/photo-1637416067365-2b5e7e8fe8fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
                 price: '1.23',
                 biddable: 'true',
-                sold: false,
-                live: true,
-    
+                sold: false, live: true, 
         },
-
 // Test auctions: [],
 collections: [ 
         {
@@ -221,7 +210,7 @@ collections: [
                 seller: '0x12356894168912694168426981233',
                 winner: '0x12356894168912694168426981234',
                 name: 'Auction 1',
-                description: 'description of auction 1',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ligula massa. Morbi a volutpat purus. Quisque libero mi, facilisis eget venenatis nec, imperdiet consectetur quam.',
                 duration: 10,
                 image: 'https://images.unsplash.com/photo-1650615567023-0721bceeecb6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
                 price: '1.23',
@@ -243,12 +232,51 @@ collections: [
                 price: '2.33',
                 biddable: 'true',
                 sold: true,
-                live: false,
-    
-        },
-]
+                live: false, },
+        ],
 
-})
+bidders: [
+        {
+                timestamp: 164554523000,
+                bidder: '0x3456789012345678980123456789012345678901',
+                price: 0.5,
+                refunded: true,
+                won: false,
+        },
+        {
+                timestamp: 164554522000,
+                bidder: '0x4567890123456789801234567890123456789012',
+                price: 0.25,
+                refunded: false,
+                won: false,
+        },
+        {
+                timestamp: 1645545421000,
+                bidder: '0x5678901234567898012345678901234567890123',
+                price: 0.75,
+                refunded: true,
+                won: true,
+
+        },
+        {
+                timestamp: 1645545420000,
+                bidder: '0x6789012345678980123456789012345678901234',
+                price: 1.25,
+                refunded: false,
+                won: false,
+
+        },
+        {
+                timestamp: 1645545419000,
+                bidder: '0x6789012345678980123456789012345678901234',
+                price: 1,
+                refunded: false,
+                won: true,
+
+        },
+        ],
+        
+        })
 
 
 //Truncate function - text length to fit the specified 
