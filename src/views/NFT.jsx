@@ -1,6 +1,8 @@
 import { useGlobalState } from "../store"
 import { truncate } from "../store"
 import Identicon from 'react-identicons'
+import Countdown from "../components/Countdown"
+
 
 
 const NFT = () => {
@@ -17,6 +19,9 @@ const NFT = () => {
       <div>
         <Details auction={auction} account={connectedAccount}/> 
         {bidders.length > 0 ? (<Bidders auction={auction} bidders={bidders} />) : null}
+        <CountdownPrice auction={auction} />
+        <ActionButton auction={auction} account={connectedAccount} />
+
       </div>
     </div>
 
@@ -44,7 +49,7 @@ const Bidders =({bidders, auction}) =>{
   return(
     <div className=" flex flex-col">
       <span>Top Bidders</span>
-      <div className="h-[calc(100vh_-_40.5rem)] overflow-y-auto">
+      <div className="h-[calc(100vh_-_40.5rem)] overflow-y-auto ">
         {bidders.map((bid, i) => (
           <div key={i} className=" flex justify-between items-center"> 
         <div className="flex justify-start items-center my-2 space-x-2">
@@ -60,4 +65,33 @@ const Bidders =({bidders, auction}) =>{
   )
 }
 
+const CountdownPrice =({auction}) => {
+  return (
+<div className="flex justify-between items-center py-5" >
+  <div>
+    <span className="font-bold  ">Current Price</span>
+    <p className="text-sm font-light">{auction?.price} ETH</p>
+  </div>
+
+  <div className="lowercase">
+    <span className="font-bold">
+      {auction?.duration > Date.now() ? (
+        <Countdown timestamp={auction.duration}/>
+      ) : ('00:00:00')}
+    </span>
+  </div>
+</div>
+  )
+}
+
+const ActionButton =({auction, account }) => {
+return (
+  <div className="flex justify-start items-center space-x-2 mt-2">
+    {auction.tokenId % 2 == 0 ? (<button className="shadow-sm shadow-black text-white bg-gray-500 hover:bg-gray-700 md:text-xs p-2.5 rounded-sm cursor-pointer font-light">Place a Bid</button>) 
+    :
+    (<button className="shadow-sm shadow-black text-white bg-red-500 hover:bg-red-700 md:text-xs p-2.5 rounded-sm cursor-pointer font-light">Buy NFT</button>)}
+  </div>
+
+)
+}
 export default NFT

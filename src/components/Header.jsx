@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 const Header = () => {
   return (
 
-  <nav className="w-4/5 flex md:justify-center justify-between items-center py-8 mx-auto text-white">
+  <nav className="w-4/5 flex md:justify-center justify-between items-center py-12 mx-auto text-white">
     <div className="md:flex-[0.5] flex-initial justify-center items-center ">
       {/* Logo/Name of site */}
         <Link to="/">

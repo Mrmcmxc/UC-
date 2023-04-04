@@ -18,10 +18,10 @@ const Banner = () => {
         // Top Page Title
         
         <div className="flex flex-col md:flex-row w-full justify-between items-center mx-auto"> 
-<div class="blob"></div>  
+            <div class="blob"></div>  
             <div class="blob3"></div>
             <div className="text-white z-10">
-                <h1 className=" font-semibold text-5xl py-1">Create, Collect</h1>
+                <h1 className="font-semibold text-5xl py-1">Create, Collect</h1>
                 <h1 className="font-semibold text-4xl mb-4 py-2">and Sell<span className="text-blue-500 px-1" >NFTs</span>.</h1>
                 <p className="font-light" >Helping charities to create opportunity.</p>
                 <p className="font-light mb-11" >Get your NFT now.</p>
