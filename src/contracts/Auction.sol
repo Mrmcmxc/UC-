@@ -25,6 +25,7 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
         bool live;
         uint bids;
         uint duration;
+        bool biddable;
 
     }
 
@@ -71,6 +72,7 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
         string memory image,
         string memory tokenURI,
         uint price
+
     //vaildation to ensure information is supplied and accurately     
     ) public payable nonReentrant() {
         require(price > 0 ether, "sales price must be greater than Zero");
@@ -103,6 +105,55 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
         payTo(companyAcc, msg.value);
 
         emit AuctionItemCreated(tokenId , msg.sender, address(0), price, false);
+        }
+
+        // function to allow bidding with validations 
+        function offerAuction(
+            uint tokenId,
+            bool biddable,
+            uint sec,
+            uint min,
+            uint hour,
+            uint day
+
+        )public{
+            require(auctionedItem[tokenId].owner == msg.sender, "Unauthorized entity");
+            require(auctionedItem[tokenId].bids == 0, "Won auction claim now");
+
+            if(!auctionedItem[tokenId].live){
+                setApprovalForAll(address(this), true);
+                IERC721(address(this)).transferFrom(msg.sender, address(this), tokenId
+                );
+            }
+
+            auctionedItem[tokenId].bids = 0;
+            auctionedItem[tokenId].live = true;
+            auctionedItem[tokenId].sold = false;
+            auctionedItem[tokenId].biddable = biddable;
+            auctionedItem[tokenId].duration=getTimestamp(sec, min, hour, day);
+
+        }
+
+        function buyAuctionedItem(uint tokenId) public payable nonReentrant() {
+            require(msg.value >= auctionedItem[tokenId].price, "Insufficent Amount");
+            require(auctionedItem[tokenId].duration > getTimestamp(0, 0, 0, 0), "Auctioned item not available"); 
+            require(!auctionedItem[tokenId].biddable, "Auction must not be biddable");
+
+            address seller = auctionedItem[tokenId].seller;
+            address owner = auctionedItem[tokenId].owner;
+
+            auctionedItem[tokenId].live = false;
+            auctionedItem[tokenId].sold = true;
+            auctionedItem[tokenId].bids =  0;
+            auctionedItem[tokenId].duration = getTimestamp(0, 0, 0, 0);
+            auctionedItem[tokenId].owner =  msg.sender;
+
+            uint royalty = (msg.value * royaltyFee) /100;
+            payTo(owner, (msg.value - royalty));
+            payTo(seller, royalty);
+
+            IERC721(address(this)).transferFrom(address(this), msg.sender, tokenId);
+
         }
         
         function getTimestamp(
