@@ -10,11 +10,10 @@ const About = () => {
             About Us
           </h2>
           <p className=" text-white mt-2 text-3xl leading-8 font-extrabold tracking-tight  sm:text-4xl">
-            Our Story
+            The Universal Collective
           </p>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-            magnam voluptatum cupiditate veritatis in, accusamus quisquam.
+            Non-fungalbe for Non-Profit
           </p>
         </div>
 

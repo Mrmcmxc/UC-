@@ -19,7 +19,9 @@ import React from 'react';
 
 function Footer() {
   return (
+    
     <div className="pb-10 m-auto sm:px-6 lg:px-8 justify-between items-center">
+      <hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-25 dark:opacity-100' />
       <div className=" m-auto w-4/5 flex flex-wrap justify-between items-center">
         <div className="w-full sm:w-auto mb-6 sm:mb-0 text-white">
           <h1>The Universal Collective</h1>
