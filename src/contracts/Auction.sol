@@ -46,8 +46,8 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
         bool sold
     );
 
-    uint royaltyFee;
-    address companyAcc;
+    uint public royaltyFee;
+    address public companyAcc;
     uint listingPrice = 0.02 ether;
 
     //this mapping ensure that every token Id is assigned via the Auction structure
@@ -235,6 +235,26 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
 
         delete biddersOf[tokenId];
     }
+
+    function changePrice(uint tokenId, uint price) public {
+        require(auctionedItem[tokenId].owner == msg.sender, "Unauthorized entity");
+        require(getTimestamp(0,0,0,0) > auctionedItem[tokenId].duration, "Auction still live");
+        require(price > 0 ether, "Price must be greater than 0 Ether");
+        auctionedItem[tokenId].price = price;
+    }
+
+
+    //get and set listing price (cost for listing NFT on the platform)
+    function setListingPrice(uint price) public {
+        require(msg.sender == companyAcc, "Unauthorized entity!");
+        listingPrice = price;
+    }
+    function getListingPrice() public view returns (uint) {
+        return listingPrice;
+    }
+
+    
+
 
         
         
