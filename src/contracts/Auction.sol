@@ -183,25 +183,72 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
             bidder.price = msg.value;
             bidder.timestamp = getTimestamp(0,0,0,0);
 
+
+            //pushed to array
             biddersOf[tokenId].push(bidder);
+            //increasing the number of bids by 1
             auctionedItem[tokenId].bids++;
-
-
-
+            //ensures price is not increased and asigned the new highes bid value (new bidders cannot bid below the current bid value)
+            auctionedItem[tokenId].price = msg.value;
+            auctionedItem[tokenId].winner = msg.sender;
 
         }
+
+        function claimPrize(uint tokenId, uint bid) public{
+            //Ensure time on bid is expired otherwise Auction is still live
+            require(getTimestamp(0,0,0,0) > auctionedItem[tokenId].duration, "Auction still live"); 
+            require(auctionedItem[tokenId].winner == msg.sender, "You have not won the auction");
+
+            biddersOf[tokenId][bid].won = true;
+            uint price = auctionedItem[tokenId].price;
+            uint royalty = (price * royaltyFee) / 100;
+            address seller = auctionedItem[tokenId].seller;
+            address owner = auctionedItem[tokenId].owner;
+
+            auctionedItem[tokenId].winner = address(0);
+            auctionedItem[tokenId].live = false;
+            auctionedItem[tokenId].sold = true;
+            auctionedItem[tokenId].bids = 0;
+            auctionedItem[tokenId].owner = msg.sender;
+            auctionedItem[tokenId].duration = getTimestamp(0,0,0,0);
+
+            payTo(owner,(price - royalty));
+            payTo(seller, royalty);
+
+            IERC721(address(this)).transferFrom(address(this), msg.sender, tokenId);
+
+            performRefund(tokenId);
+
+            }
+
+         function performRefund(uint tokenId) internal {
+        for(uint i = 0; i < biddersOf[tokenId].length; i++) {
+            BiddableStruct memory bidder = biddersOf[tokenId][i];
+            if(bidder.bidder != msg.sender) {
+                bidder.refunded = true;
+                payTo(bidder.bidder, bidder.price);
+            } else {
+                bidder.won = true;
+            }
+            bidder.timestamp = getTimestamp(0,0,0,0);
+        }
+
+        delete biddersOf[tokenId];
+    }
+
+        
         
         function getTimestamp(
             uint sec,
             uint min,
             uint hour,
             uint day
-        ) internal returns(uint){
+        ) internal view returns(uint){
             return block.timestamp + 
             (1 seconds * sec) +
             (1 minutes * min) +
             (1 hours * hour) +
-            (1 days * day) ;
+            (1 days * day);
         } 
 
         //payment of the listing fee to the NFT application owner company 
