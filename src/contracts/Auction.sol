@@ -11,7 +11,6 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
     //Counting total tokens (NFT in the Marketplace)
     using Counters for Counters.Counter;
     Counters.Counter private totalItems;
-
     struct AuctionStruct {
         string name;
         string description;
@@ -28,7 +27,6 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
         bool biddable;
 
     }
-
     // Bidder characteristics
     struct BiddableStruct {
         address bidder;
@@ -37,7 +35,6 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
         bool refunded;
         bool won;
     }
-
     event AuctionItemCreated(
         uint indexed tokenId,
         address seller,
@@ -45,7 +42,6 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
         uint price,
         bool sold
     );
-
     uint public royaltyFee;
     address public companyAcc;
     uint listingPrice = 0.02 ether;
@@ -55,8 +51,6 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
     mapping(uint => bool) auctionedItemExist;
     mapping(uint => BiddableStruct[]) biddersOf;
     
-
-
     //constructor to run first to initialize variables before interactions begin
      constructor(uint _royaltyFee) ERC721("Daltonic Tokens", "DAT") {
         royaltyFee = _royaltyFee;
@@ -135,13 +129,11 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
                 IERC721(address(this)).transferFrom(msg.sender, address(this), tokenId
                 );
             }
-
             auctionedItem[tokenId].bids = 0;
             auctionedItem[tokenId].live = true;
             auctionedItem[tokenId].sold = false;
             auctionedItem[tokenId].biddable = biddable;
             auctionedItem[tokenId].duration=getTimestamp(sec, min, hour, day);
-
         }
 
         function buyAuctionedItem(uint tokenId) public payable nonReentrant() {
@@ -166,7 +158,6 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
             payTo(seller, royalty);
 
             IERC721(address(this)).transferFrom(address(this), msg.sender, tokenId);
-
         }
 
         //allows multiple people/accounts to bid on a token
@@ -191,7 +182,6 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
             //ensures price is not increased and asigned the new highes bid value (new bidders cannot bid below the current bid value)
             auctionedItem[tokenId].price = msg.value;
             auctionedItem[tokenId].winner = msg.sender;
-
         }
 
         function claimPrize(uint tokenId, uint bid) public{
@@ -218,7 +208,6 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
             IERC721(address(this)).transferFrom(address(this), msg.sender, tokenId);
 
             performRefund(tokenId);
-
             }
 
          function performRefund(uint tokenId) internal {
@@ -232,7 +221,6 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
             }
             bidder.timestamp = getTimestamp(0,0,0,0);
         }
-
         delete biddersOf[tokenId];
     }
 
@@ -253,10 +241,90 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
         return listingPrice;
     }
 
-    
 
+    //get a specific auction
+    function getAuction(uint tokenId) public view returns (AuctionStruct memory) {
+        return auctionedItem[tokenId];
+    }
+    //get all auctions on the application 
+    function getAuction() public view returns(AuctionStruct[] memory Auctions) {
+        Auctions = new AuctionStruct[](totalItems.current());
 
-        
+        for(uint i = 0; i < totalItems.current(); i++) {
+            Auctions[i] = auctionedItem[i + 1];
+        }
+    }
+
+    //get all unsold auctions items
+    function getUnsoldAuctions() public view returns(AuctionStruct[] memory Auctions) {
+        uint totalSpace;
+        for(uint i = 0; i < totalItems.current(); i++){
+            if(!auctionedItem[i + 1].sold) totalSpace++;
+        }
+        Auctions = new AuctionStruct[](totalSpace);
+
+        uint index;
+           for(uint i = 0; i < totalItems.current(); i++) {
+            if(!auctionedItem[i + 1].sold) {
+                Auctions[index] = auctionedItem[i + 1];
+                index++;
+            }
+        }
+    }
+        //get sold auction items
+        function getSoldAuctions() public view returns(AuctionStruct[] memory Auctions) {
+        uint totalSpace;
+        for(uint i = 0; i < totalItems.current(); i++){
+            if(auctionedItem[i + 1].sold) totalSpace++;
+        }
+        Auctions = new AuctionStruct[](totalSpace);
+
+        uint index;
+           for(uint i = 0; i < totalItems.current(); i++) {
+            if(auctionedItem[i + 1].sold) {
+                Auctions[index] = auctionedItem[i + 1];
+                index++;
+            }
+        }
+    }
+
+          //get all personal auctions
+        function getMyAuctions() public view returns(AuctionStruct[] memory Auctions) {
+        uint totalSpace;
+        for(uint i = 0; i < totalItems.current(); i++){
+            if(auctionedItem[i + 1].owner == msg.sender) totalSpace++;
+        }
+        Auctions = new AuctionStruct[](totalSpace);
+
+        uint index;
+           for(uint i = 0; i < totalItems.current(); i++) {
+            if(auctionedItem[i + 1].owner == msg.sender) {
+                Auctions[index] = auctionedItem[i + 1];
+                index++;
+            }
+        }
+    }
+        //get all live auctions
+        function getLiveAuctions() public view returns (AuctionStruct[] memory Auctions) {
+        uint totalSpace;
+        for(uint i = 0; i < totalItems.current(); i++) {
+            if(auctionedItem[i + 1].duration > getTimestamp(0,0,0,0)) totalSpace++;
+        }
+
+        Auctions = new AuctionStruct[](totalSpace);
+
+        uint index;
+        for(uint i = 0; i < totalItems.current(); i++) {
+            if(auctionedItem[i + 1].duration > getTimestamp(0,0,0,0)) {
+                Auctions[index] = auctionedItem[i + 1];
+                index++;
+            }
+        }
+    }
+    // returns all bidders on the platform for each item on the marketplace 
+    function getBidders(uint tokenId) public view returns (BiddableStruct[] memory) {
+        return biddersOf[tokenId];
+    }
         
         function getTimestamp(
             uint sec,
