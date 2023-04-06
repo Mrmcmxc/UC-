@@ -29,6 +29,15 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
 
     }
 
+    // Bidder characteristics
+    struct BiddableStruct {
+        address bidder;
+        uint price;
+        uint timestamp;
+        bool refunded;
+        bool won;
+    }
+
     event AuctionItemCreated(
         uint indexed tokenId,
         address seller,
@@ -44,6 +53,7 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
     //this mapping ensure that every token Id is assigned via the Auction structure
     mapping(uint => AuctionStruct) auctionedItem;
     mapping(uint => bool) auctionedItemExist;
+    mapping(uint => BiddableStruct[]) biddersOf;
     
 
 
@@ -135,8 +145,11 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
         }
 
         function buyAuctionedItem(uint tokenId) public payable nonReentrant() {
+            //checking to see if funds are available
             require(msg.value >= auctionedItem[tokenId].price, "Insufficent Amount");
+            //time expire tracking on a bid
             require(auctionedItem[tokenId].duration > getTimestamp(0, 0, 0, 0), "Auctioned item not available"); 
+
             require(!auctionedItem[tokenId].biddable, "Auction must not be biddable");
 
             address seller = auctionedItem[tokenId].seller;
@@ -153,6 +166,28 @@ contract Auction is ERC721URIStorage, ReentrancyGuard {
             payTo(seller, royalty);
 
             IERC721(address(this)).transferFrom(address(this), msg.sender, tokenId);
+
+        }
+
+        //allows multiple people/accounts to bid on a token
+        function placeBid(uint tokenId) public payable{
+             //checking to see if funds are available
+            require(msg.value >= auctionedItem[tokenId].price, "Insufficent Amount");
+            //time expire tracking on a bid
+            require(auctionedItem[tokenId].duration > getTimestamp(0, 0, 0, 0), "Auctioned item not available"); 
+            require(auctionedItem[tokenId].biddable, "Auction must be biddable");
+
+
+            BiddableStruct memory bidder;
+            bidder.bidder = msg.sender;
+            bidder.price = msg.value;
+            bidder.timestamp = getTimestamp(0,0,0,0);
+
+            biddersOf[tokenId].push(bidder);
+            auctionedItem[tokenId].bids++;
+
+
+
 
         }
         
