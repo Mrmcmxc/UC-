@@ -10,12 +10,13 @@ const NewToNFT = () => {
 
         {/* Section 1 */}
         <section className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div className='text-center pb-4 '>
+          <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase text-center ">
+           Learn
+           </h2>
+           </div>
           <div className='pt-8 px-4 bg-[#9fccff] bg-opacity-10 backdrop-blur-3xl rounded-2xl shadow-lx shadow-black'>
           <div className="lg:text-center">
-          <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">
-           Learn
-          </h2>
-          
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
               Non Fungable Tokens (NFTs)
             </p>

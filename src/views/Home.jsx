@@ -1,10 +1,10 @@
 import Hero from "../components/Hero"
 import CreateNFT from "../components/CreateNFT"
 import Artworks from "../components/Artworks"
-import Footer from "../components/Footer"
 import Empty from "../components/Empty"
 import { useGlobalState } from "../store"
 import HowITWorks from "../components/HowITWorks"
+import Wallets from "../components/Wallets"
 
 
 
@@ -19,7 +19,7 @@ const Home = () => {
       <CreateNFT/>
       {/* <Artwork auctions={auctions}/> */}
       {auctions.length > 0 ? <Artworks auctions={auctions} /> : <Empty/>}
-     
+      <Wallets />
       
       
     </div>
