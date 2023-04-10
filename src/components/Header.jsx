@@ -49,7 +49,7 @@ export default Header
 //   }, [])
 
 //   return (
-//     <nav className={`nav ${show} bg-blue w-4/5 flex md:justify-center justify-between items-center py-12 mx-auto text-white sticky top-0 z-50`}>
+//     <nav className={`nav ${show} bg-[#9fccff] bg-opacity-5 backdrop-blur-xl w-full flex md:justify-center justify-between items-center py-4 px-4 mx-auto text-white sticky top-0 z-50`}>
 //       <div className="md:flex-[0.5] flex-initial justify-center items-center">
 //         {/* Logo/Name of site */}
 //         <Link to="/">
@@ -69,6 +69,7 @@ export default Header
 // };
 
 // export default Header;
+
 
 
 
