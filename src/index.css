@@ -103,6 +103,7 @@ body {
   -webkit-animation: move3 10s infinite alternate;
           animation: move3 60s infinite alternate;
   transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
+  
 }
 
 .blobAb {
@@ -119,11 +120,11 @@ body {
   -webkit-animation: moveAb 10s infinite alternate;
           animation: moveAb 20s infinite alternate;
   transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
+  
 }
 
 
 .blobAb1 {
- 
   position: absolute;
   width: 335px;
   height: 335px;
