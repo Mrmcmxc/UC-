@@ -30,6 +30,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@openzeppelin/contracts": "^4.8.2",
     "@tailwindcss/forms": "0.4.0",
     "assert": "^2.0.0",
@@ -51,6 +52,7 @@
     "postcss": "8.4.5",
     "process": "^0.11.10",
     "react-app-rewired": "^2.1.11",
+    "sharp": "^0.32.0",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
     "tailwindcss": "^3.2.7",

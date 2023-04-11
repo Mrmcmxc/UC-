@@ -2,19 +2,19 @@ const { ethers } = require('hardhat')
 const fs = require('fs')
 
 async function main() {
-  const contract_name = ''
-  const Contract = await ethers.getContractFactory(contract_name)
-  const contract = await Contract.deploy()
+  const royaltyFee = 5
+  const Contract = await ethers.getContractFactory('Auction')
+  const contract = await Contract.deploy(royaltyFee)
 
   await contract.deployed()
 
   const address = JSON.stringify({ address: contract.address }, null, 4)
-  fs.writeFile('./src/abis/contractAddress.json', address, 'utf8', (err) => {
-    if (err) {
-      console.error(err)
+  fs.writeFile('./src/abis/contractAddress.json', address, 'utf8', (error) => {
+    if (error) {
+      console.log(error)
       return
     }
-    console.log('Deployed contract address', contract.address)
+    console.log('Deployed contract address: ', contract.address)
   })
 }
 
