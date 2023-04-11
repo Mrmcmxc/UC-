@@ -52,11 +52,9 @@ function Footer() {
         </div>
         <div className="w-full sm:w-auto">
           <div className="relative">
-            <input type="search" className="w-full bg-gray-800 rounded-md p-2 pl-10 text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Search"/>
+            <input type="search" className="w-full bg-gray-800 rounded-md p-2  text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Search"/>
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg className="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M8 16a8 8 0 100-16 8 8 0 000 16zm9.707-1.293l-4-4a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414-1.414z" clipRule="evenodd" />
-              </svg>
+              
             </div>
           </div>
         </div>
