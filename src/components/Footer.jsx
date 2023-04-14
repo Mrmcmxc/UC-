@@ -16,6 +16,7 @@
 // export default Footer
 
 import React from 'react';
+import { FaTwitter, FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa';
 
 function Footer() {
   return (
@@ -51,12 +52,25 @@ function Footer() {
           </ul>
         </div>
         <div className="w-full sm:w-auto">
-          <div className="relative">
-            <input type="search" className="w-full bg-gray-800 rounded-md p-2  text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Search"/>
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              
-            </div>
-          </div>
+          <div className="mt-8 flex">
+               <a href="https://twitter.com/" className="text-white hover:text-blue-500">
+                 <span className="sr-only">Twitter</span>
+                 <FaTwitter className="h-6 w-6" />
+               </a>
+               <a href="https://www.instagram.com/" className="ml-6 text-white hover:text-blue-500">
+                 <span className="sr-only">Instagram</span>
+                 <FaInstagram className="h-6 w-6" />
+               </a>
+               <a href="https://www.facebook.com/" className="ml-6 text-white hover:text-blue-500">
+                 <span className="sr-only">Facebook</span>
+                 <FaFacebook className="h-6 w-6" />
+               </a>
+               <a href="https://www.linkedin.com/" className="ml-6 text-white hover:text-blue-500">
+                 <span className="sr-only">LinkedIn</span>
+                 <FaLinkedin className="h-6 w-6" />
+               </a>
+             </div>
+          
         </div>
       </div>
       <p className=" text-white pt-8 text-center text-xs">&copy;2023 All rights reserved.</p>

@@ -18,8 +18,8 @@ const Banner = () => {
         // Top Page Title
         
         <div className="flex flex-col md:flex-row w-full justify-between items-center mx-auto"> 
-            <div class="blob"></div>  
-            <div class="blob3"></div>
+            <div className="blob"></div>  
+            <div className="blob3"></div>
             <div className="text-white z-10">
                 <h1 className="font-semibold text-5xl py-1">Create, Collect</h1>
                 <h1 className="font-semibold text-4xl mb-4 py-2">and Sell<span className="text-blue-500 px-1" >NFTs</span>.</h1>
@@ -33,16 +33,16 @@ const Banner = () => {
                 </div>
                     <div className='flex items-center justify-start space-x-14 w-3/4 mt-5'>
                         <div>
-                            <p className='font-bold' >100k</p>
-                            <snall className='text-gray-300'>Auctions</snall>
+                            <p className="font-bold" >100k</p>
+                            <small className='text-gray-300'>Auctions</small>
                         </div>
                         <div>
                             <p className='font-bold' >210k</p>
-                            <snall className='text-gray-300'>Rare</snall>
+                            <small className='text-gray-300'>Rare</small>
                         </div>
                         <div>
                             <p className='font-bold' >120k</p>
-                            <snall className='text-gray-300'>Artists</snall>
+                            <small className='text-gray-300'>Artists</small>
                         </div>
                     </div>
                     

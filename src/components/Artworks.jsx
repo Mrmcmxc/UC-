@@ -66,7 +66,7 @@ const Artworks = ({auctions, title, showOffer}) => {
     const description = auction.description.toLowerCase();
     const search = searchTerm.toLowerCase();
 
-    return name.includes(search) || description.includes(search);
+    return name.includes(search) || description.includes(search); 
   });
 
   return (

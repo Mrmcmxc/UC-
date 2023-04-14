@@ -24,7 +24,6 @@ const NewToNFT = () => {
             {/* <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto"> Lorem ipsum dolor sit amet consect adipiscing elit. Lorem ipsum dolor sit amet consect adipiscing elit.Lorem ipsum dolor sit amet consect adipiscing elit.Lorem ipsum dolor sit amet consect adipiscing elit.Lorem ipsum dolor sit amet consect adipiscing elit.Lorem ipsum dolor sit amet consect adipiscing elit.
             </p> */}
           </div>
-
           <div className="m-auto">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               <div className="col-span-1">
@@ -43,6 +42,7 @@ const NewToNFT = () => {
           </div>
         </section>
         {/* <hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-25 dark:opacity-100' /> */}
+
         {/* Section 2 */}
         <section className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className='pt-8 px-4 bg-[#9fccff] bg-opacity-10 backdrop-blur-3xl rounded-2xl shadow-lx shadow-black'>
@@ -72,6 +72,7 @@ const NewToNFT = () => {
           </div>
         </section>
         {/* <hr className='my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-25 dark:opacity-100' /> */}
+
         {/* section 3 */}
         <section className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className='pt-8 px-4 bg-[#9fccff] bg-opacity-10 backdrop-blur-3xl rounded-2xl shadow-lx shadow-black'>

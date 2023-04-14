@@ -71,6 +71,7 @@ body {
   }
 }
 
+/* ------------------------------------------------------BLOB--------------------------------------------------- */
 
 .blob {
   position: absolute;
@@ -88,109 +89,7 @@ body {
   transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
 }
 
-
-.blob3 {
- 
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 47, 47, 0.42) 31.77%,
-    #ff9c8a 100%
-  );
-  mix-blend-mode: color-dodge;
-  -webkit-animation: move3 10s infinite alternate;
-          animation: move3 60s infinite alternate;
-  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
-  
-}
-
-.blobAb {
-  position: absolute;
-  width: 380px;
-  height: 400px;
-  overflow: hidden;
-  background: linear-gradient(
-    180deg,
-    rgba(47, 184, 255,0.42) 31.77%,
-    #5c9df1 100%
-  );
-  mix-blend-mode: normal;
-  -webkit-animation: moveAb 10s infinite alternate;
-          animation: moveAb 20s infinite alternate;
-  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
-  
-}
-
-
-.blobAb1 {
-  position: absolute;
-  width: 335px;
-  height: 335px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 47, 47, 0.42) 31.77%,
-    #ff9c8a 100%
-  );
-  mix-blend-mode: normal;
-  -webkit-animation: moveAb1 10s infinite alternate;
-          animation: moveAb1 30s infinite alternate;
-  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
-}
-
-/* Blob1 */
-@-webkit-keyframes moveAb {
-  from {
-    transform: translate(0px, 0px) rotate(90deg);
-    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
-  }
-
-  to {
-    transform: translate(0px, 0px) rotate(270deg);
-    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
-  }
-}
-
-@keyframes moveAb {
-  from {
-    transform: translate(-0px, -0px) rotate(90deg);
-    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
-  }
-
-  to {
-    transform: translate(0px, 0px) rotate(-270deg);
-    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
-  }
-}
-
-
-/* blob3 */
-@-webkit-keyframes moveAb1 {
-  from {
-    transform: translate(-0px, -0px) rotate(90deg);
-    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
-  }
-
-  to {
-    transform: translate(0px, 0px) rotate(360deg);
-    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
-  }
-}
-
-@keyframes moveAb1 {
-  from {
-    transform: translate(0px, 0px) rotate(-10deg);
-    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
-  }
-
-  to {
-    transform: translate(0px, 0px) rotate(270deg);
-    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
-  }
-}
-
-/* Blob1 */
+/* Blob */
 @-webkit-keyframes move {
   from {
     transform: translate(-100px, -150px) rotate(90deg);
@@ -215,6 +114,23 @@ body {
   }
 }
 
+/* ------------------------------------------------------BLOB3----------------------------------------------- */
+.blob3 {
+ 
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 47, 47, 0.42) 31.77%,
+    #ff9c8a 100%
+  );
+  mix-blend-mode: color-dodge;
+  -webkit-animation: move3 10s infinite alternate;
+          animation: move3 60s infinite alternate;
+  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
+  
+}
 
 /* blob3 */
 @-webkit-keyframes move3 {
@@ -241,36 +157,279 @@ body {
   }
 }
 
+/* ------------------------------------------------------BLOB AB----------------------------------------------- */
+.blobAb {
+  position: absolute;
+  width: 175px;
+  height: 175px;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    rgba(47, 184, 255,0.42) 31.77%,
+    #5c9df1 100%
+  );
+  mix-blend-mode: normal;
+  -webkit-animation: moveAb 10s infinite alternate;
+          animation: moveAb 20s infinite alternate;
+  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
+  
+}
+
+/* BlobAb */
+@-webkit-keyframes moveAb {
+  from {
+    transform: translate(0px, 0px) rotate(90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(0px, 0px) rotate(270deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
+
+@keyframes moveAb {
+  from {
+    transform: translate(100px, 100px) rotate(90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(100px, 50px) rotate(-270deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
+
+/* ------------------------------------------------------BLOB AB1----------------------------------------------- */
+
+.blobAb1 {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 47, 47, 0.42) 31.77%,
+    #ff9c8a 100%
+  );
+  mix-blend-mode: normal;
+  -webkit-animation: moveAb1 10s infinite alternate;
+          animation: moveAb1 30s infinite alternate;
+  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
+}
+
+/* blobAb1 */
+@-webkit-keyframes moveAb1 {
+  from {
+    transform: translate(-0px, -0px) rotate(90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(0px, 0px) rotate(360deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
+
+@keyframes moveAb1 {
+  from {
+    transform: translate(100px, 100px) rotate(-10deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(100px, 50px) rotate(270deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
+
+
+
+
+/* ------------------------------------------------------Blob Media Q----------------------------------------------- */
+
+@media screen and (max-width: 1000px) {
+  .blob {
+    width: 175px;
+    height: 175px;
+  }
+
+  @-webkit-keyframes move {
+    from {
+      transform: translate(-0px, -0px) rotate(90deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(0px, 0px) rotate(270deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
+  }
+  
+  @keyframes move {
+    from {
+      transform: translate(100px, -0px) rotate(90deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(0px, 1000px) rotate(-270deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
+  }
+  
+  .blob3 {
+    width: 150px;
+    height: 150px;
+  }
+
+  @-webkit-keyframes move3 {
+    from {
+      transform: translate(0px, 0px) rotate(90deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(0px, 0px) rotate(360deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
+  }
+  
+  @keyframes move3 {
+    from {
+      transform: translate(100px, 0px) rotate(-10deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(0px, 1000px) rotate(270deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
+  }
+
+}
+
 
 @media screen and (max-width: 768px) {
   .blob {
     width: 150px;
     height: 150px;
   }
-  .blob2 {
-    width: 75px;
-    height: 75px;
+
+  @-webkit-keyframes move {
+    from {
+      transform: translate(-0px, -0px) rotate(90deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(0px, 0px) rotate(270deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
   }
+  
+  @keyframes move {
+    from {
+      transform: translate(100px, -0px) rotate(90deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(0px, 1000px) rotate(-270deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
+  }
+  
   .blob3 {
     width: 100px;
     height: 100px;
+  }
+
+  @-webkit-keyframes move3 {
+    from {
+      transform: translate(0px, 0px) rotate(90deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(0px, 0px) rotate(360deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
+  }
+  
+  @keyframes move3 {
+    from {
+      transform: translate(100px, 0px) rotate(-10deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(0px, 1000px) rotate(270deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
   }
 
 }
 
 @media screen and (max-width: 450px) {
   .blob {
-    width: 75px;
-    height: 75px;
+    width: 125px;
+    height: 125px;
   }
-  .blob2 {
-    width: 37.5px;
-    height: 37.5px;
+
+  @-webkit-keyframes move {
+    from {
+      transform: translate(-0px, 0px) rotate(90deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(0px, 0px) rotate(270deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
   }
+  
+  @keyframes move {
+    from {
+      transform: translate(100px, 0px) rotate(90deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(0px, 2000px) rotate(-270deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
+  }
+
   .blob3 {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
   }
+
+  @-webkit-keyframes move3 {
+    from {
+      transform: translate(0px, 0px) rotate(90deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(0px, 0px) rotate(360deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
+  }
+  
+  @keyframes move3 {
+    from {
+      transform: translate(-100px, 0px) rotate(-10deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(0px, 1000px) rotate(270deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
+  }
+
+ 
 
 }
 
