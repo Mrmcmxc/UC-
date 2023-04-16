@@ -84,23 +84,22 @@ const createNFTItem = async ({
   }
 };
 
-// const loadCollection = async () => {
-//   try {
-//     if (!ethereum) return alert("Please install Metamask");
-//     const connectedAccount = getGlobalState("connectedAccount");
-//     const contract = await getEthereumContract();
-//     const collection = await contract.getMyAuctions({ from: connectedAccount });
-//     //setGlobalState("collections", structuredAuctions(collection));
-//     console.log(collection);
-//   } catch (error) {
-//     reportError(error);
-//   }
-// };
+const loadCollection = async () => {
+  try {
+    if (!ethereum) return alert("Please install Metamask");
+    const connectedAccount = getGlobalState("connectedAccount");
+    const contract = await getEthereumContract();
+    const collection = await contract.getMyAuctions({ from: connectedAccount });
+    //setGlobalState("collections", structuredAuctions(collection));
+    console.log(collection);
+  } catch (error) {
+    reportError(error);
+  }
+};
 
 const reportError = (error) => {
   console.log(error.message);
   throw new Error(error);
 };
 
-//export { isWalletConnected, connectWallet, createNFTItem, loadCollection };
-export { isWalletConnected, connectWallet, createNFTItem };
+export { isWalletConnected, connectWallet, createNFTItem, loadCollection };

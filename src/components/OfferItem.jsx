@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import picture6 from "../assets/images/picture6.png";
 import { setGlobalState, useGlobalState } from "../store";
+import { on } from "process";
 
 const OfferItem = () => {
   const [offerModal] = useGlobalState("offerModal");
@@ -12,10 +13,8 @@ const OfferItem = () => {
   const [timeline, setTimeline] = useState("");
 
   const handleSubmit = async (e) => {
-    //checks to see if the field are filled corrctly
     e.preventDefault();
     if (!period || !biddable || !timeline) return;
-
     console.log({ period, biddable, timeline });
   };
 
@@ -36,13 +35,15 @@ const OfferItem = () => {
   return (
     //add NFT Modal interface
     <div
-      className={`fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50 transform transition-transform duration-300 ${offerModal}`}
+      className={`fixed top-0 left-0 w-screen h-screen flex items-center
+      justify-center bg-black bg-opacity-50 transform
+      transition-transform duration-300 ${offerModal}`}
     >
       <div className="bg-[#151c25] shadow-md shadow-[#2574bd] rounded-lg w-11/12 sm:w-2/5 h-7/12 p-6">
         {/* onSubmit function triggered through form */}
-        <form on onSubmit={handleSubmit} className="flex flex-col">
-          <div className=" flex justify-between items-center text-white">
-            <p className="font-semibold italic">Offer NFT</p>
+        <form onSubmit={handleSubmit} className="flex flex-col">
+          <div className="flex justify-between items-center text-gray-400">
+            <p className="font-semibold italic">Offer {auction.name}</p>
             <button
               type="button"
               onClick={onClose}
@@ -51,10 +52,10 @@ const OfferItem = () => {
               <FaTimes />
             </button>
           </div>
+
           {/* Auction Image */}
-          <div className="flex justify-center items-center rounded-md mt-5">
+          <div className="flex justify-center items-center mt-5">
             <div className="shrink-0 rounded-xl overflow-hidden h-20 w-20">
-              {/* This will ensure an img is always showing on the form */}
               <img
                 src={auction.image || picture6}
                 alt="Artwork"
@@ -62,28 +63,31 @@ const OfferItem = () => {
               />
             </div>
           </div>
+
           {/* Period (days) */}
           <div className="flex justify-between items-center bg-gray-800 rounded-xl mt-5">
             <input
               type="number"
               min={1}
-              className="block w-full text-sm text-slate-500 focus:outline-none cursor-pointer focus:ring-0 bg-transparent border-0
-                        px-4 py-2"
-              placeholder="Days e.g 7"
+              className="block w-full text-sm text-slate-500 focus:outline-none
+              cursor-pointer focus:ring-0 bg-transparent border-0 px-4 py-2"
+              placeholder="Days E.g 7"
+              name="period"
               value={period}
               onChange={(e) => setPeriod(e.target.value)}
-              name="period"
               required
             />
           </div>
+
           {/* Timeline */}
           <div className="flex justify-between items-center bg-gray-800 rounded-xl mt-5">
             <select
               name="period"
-              className="block w-full text-sm text-slate-500 focus:outline-none cursor-pointer focus:ring-0 bg-transparent border-0 px-4 py-2"
-              placeholder="Days e.g 7"
+              className="block w-full text-sm text-slate-500 focus:outline-none
+              cursor-pointer focus:ring-0 bg-transparent border-0 px-4 py-2"
+              placeholder="Days E.g 7"
               value={timeline}
-              onChange={(e) => setTimeLine(e.target.value)}
+              onChange={(e) => setTimeline(e.target.value)}
               required
             >
               <option value="" hidden>
@@ -92,7 +96,7 @@ const OfferItem = () => {
               </option>
               <option value="sec">Seconds</option>
               <option value="min">Minutes</option>
-              <option value="hours">Hours</option>
+              <option value="hour">Hours</option>
               <option value="day">Days</option>
             </select>
           </div>
@@ -100,15 +104,16 @@ const OfferItem = () => {
           <div className="flex justify-between items-center bg-gray-800 rounded-xl mt-5">
             <select
               name="period"
-              className="block w-full text-sm text-slate-500 focus:outline-none cursor-pointer focus:ring-0 bg-transparent border-0 px-4 py-2  "
-              placeholder="Biddability"
+              className="block w-full text-sm text-slate-500 focus:outline-none
+              cursor-pointer focus:ring-0 bg-transparent border-0 px-4 py-2"
+              placeholder="Days E.g 7"
               value={biddable}
               onChange={(e) => setBiddable(e.target.value)}
               required
             >
               <option value="" hidden>
                 {" "}
-                Would you like to auctions this NFT?
+                Select Biddability
               </option>
               <option value={true}>Yes</option>
               <option value={false}>No</option>
