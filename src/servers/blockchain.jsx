@@ -54,9 +54,53 @@ const connectWallet = async () => {
   }
 };
 
+const createNFTItem = async ({
+  name,
+  description,
+  image,
+  metadataURI,
+  price,
+}) => {
+  try {
+    if (!ethereum) return alert("Please install Metamask");
+    const connectedAccount = getGlobalState("connectedAccount");
+    const contract = await getEthereumContract();
+
+    tx = await contract.createAuction(
+      name,
+      description,
+      image,
+      metadataURI,
+      toWei(price),
+      {
+        from: connectedAccount,
+        value: toWei(0.02),
+      }
+    );
+
+    await tx.wait();
+  } catch (error) {
+    reportError(error);
+  }
+};
+
+// const loadCollection = async () => {
+//   try {
+//     if (!ethereum) return alert("Please install Metamask");
+//     const connectedAccount = getGlobalState("connectedAccount");
+//     const contract = await getEthereumContract();
+//     const collection = await contract.getMyAuctions({ from: connectedAccount });
+//     //setGlobalState("collections", structuredAuctions(collection));
+//     console.log(collection);
+//   } catch (error) {
+//     reportError(error);
+//   }
+// };
+
 const reportError = (error) => {
   console.log(error.message);
   throw new Error(error);
 };
 
-export { isWalletConnected, connectWallet };
+//export { isWalletConnected, connectWallet, createNFTItem, loadCollection };
+export { isWalletConnected, connectWallet, createNFTItem };

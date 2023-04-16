@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { connectWallet } from "../servers/blockchain";
+import { truncate, useGlobalState } from "../store";
 
 const Header = () => {
+  const [connectedAccount] = useGlobalState("connectedAccount");
   return (
     <nav className="w-4/5 flex md:justify-center justify-between items-center py-12 mx-auto text-white">
       <div className="md:flex-[0.5] flex-initial justify-center items-center ">
@@ -39,9 +42,25 @@ const Header = () => {
           Learn
         </Link>
       </ul>
-      <button className="shadow-md shadow-blue-700 bg-blue-500 hover:bg-blue-700 md:text-sm sm:text-base p-2 rounded-md">
-        Connect Wallet
-      </button>
+
+      {!connectedAccount ? (
+        <button
+          className="shadow-md shadow-blue-700 bg-blue-500
+        hover:bg-blue-700 md:text-sm sm:text-base p-2 
+        rounded-md"
+          onClick={connectWallet}
+        >
+          Connect Wallet
+        </button>
+      ) : (
+        <button
+          className="shadow-md shadow-blue-700 bg-blue-500
+          hover:bg-blue-700 md:text-sm sm:text-base p-2 
+          rounded-md"
+        >
+          {truncate(connectedAccount, 4, 4, 11)}
+        </button>
+      )}
     </nav>
   );
 };

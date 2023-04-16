@@ -2,9 +2,13 @@ import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import picture6 from "../assets/images/picture6.png";
 import { setGlobalState, useGlobalState } from "../store";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { createNFTItem } from "../servers/blockchain";
 
 const CreateNFT = () => {
   const [boxModal] = useGlobalState("boxModal");
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -20,10 +24,27 @@ const CreateNFT = () => {
     formData.append("price", price);
     formData.append("description", description);
     formData.append("image", fileUrl);
-    resetFrom();
 
-    //Testing for the browser
-    console.log("Submitted");
+    await toast.promise(
+      new Promise(async (resolve, reject) => {
+        await axios
+          .post("http://localhost:9000/process", formData)
+          .then(async (res) => {
+            await createNFTItem(res.data)
+              .then(async () => {
+                onClose();
+                resolve();
+              })
+              .catch((error) => reject(error));
+          })
+          .catch((error) => reject(error));
+      }),
+      {
+        pending: "Minting in progress...",
+        success: "Minting completed...",
+        error: "Encoutered an error",
+      }
+    );
   };
 
   const onClose = () => {

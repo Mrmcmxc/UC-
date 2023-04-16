@@ -287,7 +287,7 @@ const truncate = (text, startChars, endChars, maxLength) => {
     let start = text.substring(0, startChars);
     let end = text.substring(text.length - endChars, text.length);
     while (start.length + end.length < maxLength) {
-      start = start + ",";
+      start = start + ".";
     }
     return start + end;
   }
